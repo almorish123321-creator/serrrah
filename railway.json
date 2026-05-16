@@ -1,23 +1,29 @@
 {
-  "build": {
-    "builder": "NIXPACKS"
-  },
-  "deployments": [
-    {
-      "name": "seha-website",
-      "root": "website",
+  "$schema": "https://railway.com/railway.schema.json",
+  "services": {
+    "bot": {
+      "source": "bot",
       "build": {
-        "builder": "NIXPACKS"
+        "builder": "nixpacks",
+        "buildEnvironment": "python3",
+        "buildCommand": "pip install -r requirements.txt"
       },
-      "start": "nginx -g \"daemon off;\""
+      "deploy": {
+        "startCommand": "python bot.py",
+        "numReplicas": 1,
+        "restartPolicyType": "ON_FAILURE",
+        "sleepApplication": false
+      }
     },
-    {
-      "name": "seha-telegram-bot",
-      "root": "bot",
+    "website": {
+      "source": "website",
       "build": {
-        "builder": "NIXPACKS"
+        "builder": "static",
+        "publishDirectory": "."
       },
-      "start": "python bot_updated.py"
+      "deploy": {
+        "numReplicas": 1
+      }
     }
-  ]
+  }
 }
