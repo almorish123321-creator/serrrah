@@ -14,12 +14,14 @@
       }
     },
     "website": {
-  "source": "website",
-  "build": {
-    "builder": "nixpacks"
-  },
-  "deploy": {
-    "startCommand": "php -S 0.0.0.0:$PORT -t .",
-    "numReplicas": 1
+      "source": "website",
+      "build": {
+        "builder": "nixpacks"
+      },
+      "deploy": {
+        "startCommand": "php -S 0.0.0.0:$PORT -t .",
+        "numReplicas": 1
+      }
+    }
   }
-} 
+}
