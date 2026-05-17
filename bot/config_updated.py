@@ -4,7 +4,7 @@ BOT_TOKEN = '8713124620:AAFQGCd4IhcKql1g1mKJXnF_ePHGh0npwLo'
 ADMIN_USER_ID = '7853478744'
 
 # API Settings
-API_BASE_URL = 'https://80-iayzosfpiazlzday7ujjn-d2b18cd3.manusvm.computer' # يمكن تغييرها حسب عنوان الخادم
+API_BASE_URL = 'https://welcoming-quietude-production-dd87.up.railway.app/' # يمكن تغييرها حسب عنوان الخادم
 API_ENDPOINT = '/api/add_leave.php'
 API_FULL_URL = API_BASE_URL + API_ENDPOINT
 
