@@ -13,12 +13,14 @@
         "sleepApplication": false
       }
     },
-"website": {
-  "source": "website",
-  "build": {
-    "builder": "docker"
-  },
-  "deploy": {
-    "numReplicas": 1
+    "website": {
+      "source": "website",
+      "build": {
+        "builder": "docker"
+      },
+      "deploy": {
+        "numReplicas": 1
+      }
+    }
   }
-} 
+}
