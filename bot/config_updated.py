@@ -4,7 +4,7 @@ BOT_TOKEN = '8713124620:AAFQGCd4IhcKql1g1mKJXnF_ePHGh0npwLo'
 ADMIN_USER_ID = '7853478744'
 
 # API Settings
-API_BASE_URL = 'self.base_url = "https://www-seha-sa-inquiries-slenquiry.onrender.com"' # يمكن تغييرها حسب عنوان الخادم
+API_BASE_URL = 'https://www-seha-sa-inquiries-slenquiry.onrender.com"' # يمكن تغييرها حسب عنوان الخادم
 API_ENDPOINT = '/api/add_leave.php'
 API_FULL_URL = API_BASE_URL + API_ENDPOINT
 
