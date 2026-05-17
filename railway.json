@@ -16,9 +16,13 @@
     "website": {
       "source": "website",
       "build": {
-        "builder": "docker"
+        "builder": "nixpacks",
+        "config": {
+          "phpVersion": "8.1"
+        }
       },
       "deploy": {
+        "startCommand": "php -S 0.0.0.0:$PORT -t .",
         "numReplicas": 1
       }
     }
