@@ -27,7 +27,7 @@ HOSPITAL_LOGO = f'{IMAGES_DIR}/شعارالمستشفى.png'
 HEALTH_INFO_CENTER_LOGO = f'{IMAGES_DIR}/شعارالمركزالوطنيللمعلوماتالصحية.jpg'
 
 # QR Code settings
-QR_URL = 'https://www.seha.sa/#/inquiries/slenquiry'
+QR_URL = https://welcoming-quietude-production-dd87.up.railway.app/
 
 # PDF settings
 PDF_WIDTH = 297  # mm
