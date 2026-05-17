@@ -1,39 +1,15 @@
-FROM php:8.1-fpm-alpine
+FROM php:8.1-apache
 
-# تثبيت nginx و supervisor
-RUN apk add --no-cache nginx supervisor
+# تفعيل mod_rewrite لروابط نظيفة
+RUN a2enmod rewrite
 
-# نسخ ملفات الموقع
+# نسخ جميع ملفات الموقع
 COPY . /var/www/html
 
-# إعداد nginx ليمرر ملفات PHP إلى php-fpm
-# مع استبدال المنفذ 80 بالمنفذ الديناميكي PORT عند بدء التشغيل
-RUN echo $'server { \n\
-    listen 80; \n\
-    root /var/www/html; \n\
-    index index.php index.html; \n\
-    location / { \n\
-        try_files $uri $uri/ /index.php?$query_string; \n\
-    } \n\
-    location ~ \.php$ { \n\
-        fastcgi_pass 127.0.0.1:9000; \n\
-        fastcgi_index index.php; \n\
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; \n\
-        include fastcgi_params; \n\
-    } \n\
-}' > /etc/nginx/http.d/default.conf \
-&& echo $'[supervisord] \n\
-nodaemon=true \n\
-\n\
-[program:php-fpm] \n\
-command=php-fpm \n\
-autostart=true \n\
-autorestart=true \n\
-\n\
-[program:nginx] \n\
-command=/bin/sh -c "sed -i \'s/listen 80;/listen \'$PORT\';/\' /etc/nginx/http.d/default.conf && nginx -g \'daemon off;\'" \n\
-autostart=true \n\
-autorestart=true' > /etc/supervisord.conf
+# ضبط الصلاحيات
+RUN chown -R www-data:www-data /var/www/html
+
+# سيستخدم Apache المنفذ من متغير البيئة PORT تلقائياً
+# لا حاجة لتغيير أي شيء، Railway سيحقن المنفذ تلقائياً في Apache
 
 EXPOSE 80
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
