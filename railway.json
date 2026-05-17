@@ -7,7 +7,7 @@
         "builder": "nixpacks"
       },
       "deploy": {
-        "startCommand": "python bot.py",
+        "startCommand": "python bot_updated.py" 
         "numReplicas": 1,
         "restartPolicyType": "ON_FAILURE",
         "sleepApplication": false
