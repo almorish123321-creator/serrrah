@@ -16,10 +16,9 @@
     "website": {
       "source": "website",
       "build": {
-        "builder": "nixpacks"
+        "builder": "docker"
       },
       "deploy": {
-        "startCommand": "php -S 0.0.0.0:$PORT -t .",
         "numReplicas": 1
       }
     }
